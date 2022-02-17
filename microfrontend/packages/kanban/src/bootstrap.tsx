@@ -14,17 +14,25 @@ export const useHistory = createBrowserHistory();
 const useMount = (
   el: ReactDOM.Container,
   routePrefix: string,
-  useRemoteStore: any
+  useRemoteStore: any,
+  StoreProvider?: any,
+  useStore?: any
 ) => {
   ReactDOM.render(
     <React.StrictMode>
-      <Provider store={store}>
+      <StoreProvider>
+        {/* <Provider store={store}> */}
         <GlobalStyles />
         <ToastContainer position="top-right" hideProgressBar />
         <CustomRouter history={useHistory}>
-          <App routePrefix={routePrefix} useRemoteStore={useRemoteStore} />
+          <App
+            routePrefix={routePrefix}
+            useRemoteStore={useRemoteStore}
+            useStore={useStore}
+          />
         </CustomRouter>
-      </Provider>
+        {/* </Provider> */}
+      </StoreProvider>
     </React.StrictMode>,
     el
   );

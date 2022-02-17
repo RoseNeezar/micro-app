@@ -66,34 +66,13 @@ const Landing = () => {
             tw="flex w-full justify-center md:justify-start pb-24 lg:pb-0 "
             className="fade-in"
           >
-            {!user ? (
-              <>
-                <Link
-                  tw="h-12 mr-4 bg-dark-third font-bold tracking-widest text-dark-txt hover:bg-dark-second text-center rounded-2xl p-3 w-32"
-                  className="bounce-top-icons"
-                  to="/login"
-                  state={{ backgroundLocation: location }}
-                >
-                  Login
-                </Link>
-                <Link
-                  tw="h-12 mr-4 bg-dark-third font-bold tracking-widest text-dark-txt hover:bg-dark-second text-center rounded-2xl p-3 w-32"
-                  className="bounce-top-icons"
-                  to="/register"
-                  state={{ backgroundLocation: location }}
-                >
-                  Register
-                </Link>
-              </>
-            ) : (
-              <Link
-                tw="h-12 mr-4 bg-dark-third font-bold tracking-widest text-dark-txt hover:bg-dark-second text-center rounded-2xl p-3 w-32"
-                className="bounce-top-icons"
-                to="/app"
-              >
-                Go to app
-              </Link>
-            )}
+            <Link
+              tw="h-12 mr-4 bg-dark-third font-bold tracking-widest text-dark-txt hover:bg-dark-second text-center rounded-2xl p-3 w-32"
+              className="bounce-top-icons"
+              to="/app"
+            >
+              Go to app
+            </Link>
           </div>
         </div>
 

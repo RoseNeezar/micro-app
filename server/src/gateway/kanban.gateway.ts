@@ -15,7 +15,7 @@ const mockData = [
   },
   {
     id: 2,
-    app: 'mobilty',
+    app: 'mobility',
     data: '2 Huxley Parkway',
   },
   {
@@ -25,7 +25,7 @@ const mockData = [
   },
   {
     id: 4,
-    app: 'mobilty',
+    app: 'mobility',
     data: '2093 Miller Terrace',
   },
   {

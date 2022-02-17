@@ -6,9 +6,9 @@
     "build": "lerna run --scope @kanban-client/* --parallel build",
     "serve": "lerna run --scope @kanban-client/* --parallel serve",
     "clean": "lerna run --scope @kanban-client/* --parallel clean",
-    "lint": "lerna run --scope @kanban-client/root-app lint",
+    "lint": "lerna run --scope @kanban-client/rootApp lint",
     "bootstrap": "lerna bootstrap --ignore-scripts",
-    "add:root-app": "lerna add --scope @kanban-client/root-app "
+    "add:rootApp": "lerna add --scope @kanban-client/rootApp "
   },
   "devDependencies": {
     "lerna": "^4.0.0"

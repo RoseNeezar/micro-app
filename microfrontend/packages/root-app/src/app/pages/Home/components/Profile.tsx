@@ -10,7 +10,7 @@ const Profile = () => {
           <i className="bx bx-ghost"></i>
         </div>
         <div tw="text-xl p-2 text-dark-txt bg-dark-main m-2 rounded-xl text-center">
-          {user.username}
+          {/* {user.username} */}
         </div>
         <div tw="flex flex-row justify-between text-xl p-2 text-dark-txt bg-dark-main m-2 rounded-xl text-center ">
           <div className="pulse " />

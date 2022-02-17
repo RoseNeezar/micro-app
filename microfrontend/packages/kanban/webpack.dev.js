@@ -31,6 +31,10 @@ const devConfig = {
     new ModuleFederationPlugin({
       name: "kanban",
       filename: "remoteEntry.js",
+      remotes: {
+        rootApp: "rootApp@[rootApp]/remoteEntry.js",
+        // game: "game@[gameUrl]/remoteEntry.js",
+      },
       exposes: {
         "./Kanban": "./src/bootstrap",
       },

@@ -23,15 +23,16 @@ const devConfig = {
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
-  // optimization: {
-  //   runtimeChunk: "single",
-  // },
   plugins: [
     new ModuleFederationPlugin({
-      name: "root-app",
+      name: "rootApp",
+      filename: "remoteEntry.js",
       remotes: {
         kanban: "kanban@[kanbanUrl]/remoteEntry.js",
         // game: "game@[gameUrl]/remoteEntry.js",
+      },
+      exposes: {
+        "./State": "./src/app/store/module/global/global.remote",
       },
       shared: {
         ...deps,

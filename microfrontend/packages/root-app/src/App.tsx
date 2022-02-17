@@ -26,14 +26,7 @@ const App: React.FC = () => {
     <React.Suspense fallback={<h1>Loading...</h1>}>
       <Routes location={state?.backgroundLocation || location}>
         <Route path="/landing" element={<Landing />} />
-        <Route
-          path="app"
-          element={
-            <AuthRoute>
-              <Home />
-            </AuthRoute>
-          }
-        >
+        <Route path="app" element={<Home />}>
           <Route path="kanban/*" element={<Kanban />} />
           {/* <Route path="game/*" element={<Game />} /> */}
           <Route path="/app" element={<Navigate replace to="kanban" />} />

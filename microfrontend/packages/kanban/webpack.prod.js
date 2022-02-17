@@ -11,14 +11,14 @@ const prodConfig = {
   mode: "production",
   output: {
     filename: "[name].[contenthash].js",
-    // publicPath: '/root-app/latest/'
+    // publicPath: '/rootApp/latest/'
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "root-app",
+      name: "rootApp",
       remotes: {
         todo: `todo@https://optimistic-curie-93c51c.netlify.app/remoteEntry.js`,
       },

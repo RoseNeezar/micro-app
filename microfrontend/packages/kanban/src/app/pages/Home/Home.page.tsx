@@ -5,12 +5,15 @@ import { RootState } from "@store/store";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import KanbanCard from "./components/KanbanCard";
+import { useStore } from "rootApp/State";
 
 const Home = () => {
+  const { xpState, mobilityState } = useStore();
+
   const navigate = useNavigate();
-  const KanbanBoards = useAppSelector(
-    (state: RootState) => state.kanban.boards
-  );
+  // const KanbanBoards = useAppSelector(
+  //   (state: RootState) => state.kanban.boards
+  // );
   const dispatch = useAppDispatch();
   const [errors, setErrors] = useState<any>({});
 
@@ -31,9 +34,10 @@ const Home = () => {
     resetText();
   };
 
-  useEffect(() => {
-    dispatch(fetchBoards());
-  }, []);
+  // useEffect(() => {
+  //   console.log("state---", State);
+  //   // dispatch(fetchBoards());
+  // }, []);
 
   return (
     <div tw="bg-dark-main flex flex-col items-center justify-center w-full mt-10 overflow-hidden  ">
@@ -54,11 +58,14 @@ const Home = () => {
           </button>
         </div>
       </div>
-
+      <h1 tw="text-white">
+        {mobilityState ? JSON.stringify(mobilityState) : "empoty"}
+      </h1>
+      <h1 tw="text-white">{xpState ? JSON.stringify(xpState) : "empoty"}</h1>
       <div tw="grid justify-center w-full grid-flow-row gap-10 overflow-scroll auto-rows-min grid-rows-min grid-cols-fit">
-        {KanbanBoards.filter((fil: any) => fil.title !== "").map((res: any) => (
+        {/* {KanbanBoards.filter((fil: any) => fil.title !== "").map((res: any) => (
           <KanbanCard {...res} />
-        ))}
+        ))} */}
       </div>
     </div>
   );

@@ -7,7 +7,8 @@ import useRouteHooks from "./app/shared-hooks/useRouteHooks";
 const App: React.FC<{
   routePrefix: string;
   useRemoteStore?: any;
-}> = ({ routePrefix, useRemoteStore }) => {
+  useStore?: any;
+}> = ({ routePrefix, useRemoteStore, useStore }) => {
   const location = useLocation();
   const state = location.state as { backgroundLocation?: Location };
 

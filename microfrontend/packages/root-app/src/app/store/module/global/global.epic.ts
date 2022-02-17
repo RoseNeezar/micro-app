@@ -1,17 +1,7 @@
 import { AnyAction } from "@reduxjs/toolkit";
 import { RootState } from "@store/store";
-
 import { combineEpics, Epic } from "redux-observable";
-import {
-  catchError,
-  EMPTY,
-  filter,
-  ignoreElements,
-  map,
-  of,
-  switchMap,
-  tap,
-} from "rxjs";
+import { catchError, concatMap, EMPTY, filter, map, of, switchMap } from "rxjs";
 import agent from "../../../api/agent";
 import { errorCatcher } from "../error/error.slice";
 import {
@@ -19,6 +9,8 @@ import {
   createBoard,
   fetchBoards,
   globalState,
+  setMobilityState,
+  setXpState,
 } from "./global.slice";
 
 export type MyEpic = Epic<AnyAction, AnyAction, RootState>;
@@ -50,14 +42,18 @@ const fetchBoardEpic: MyEpic = (action$, state$) =>
   );
 
 const globalEpic: MyEpic = (action$, state$) =>
-  action$
-    .pipe(
-      filter(globalState.match),
-      switchMap((action) => {
-        console.log("rxjs--", action.payload);
-        return EMPTY;
-      })
-    )
-    .pipe(ignoreElements());
+  action$.pipe(
+    filter(globalState.match),
+    concatMap((action) => {
+      switch (action.payload.app) {
+        case "xp":
+          return of(setXpState(action.payload));
+        case "mobility":
+          return of(setMobilityState(action.payload));
+        default:
+          return EMPTY;
+      }
+    })
+  );
 
 export default combineEpics(createBoardEpic, fetchBoardEpic, globalEpic);
